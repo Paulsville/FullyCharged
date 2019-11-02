@@ -274,4 +274,5 @@ autoplay = true
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="EnergyBar" parent="GUI" instance=ExtResource( 9 )]
+position = Vector2( 16, 16 )
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_player_energy_updated"]

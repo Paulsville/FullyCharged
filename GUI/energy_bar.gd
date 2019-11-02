@@ -11,9 +11,10 @@ func _ready():
 	animated_health = player_max_health
 	
 func _process(delta):
-	bar.value = animated_health
+	var round_value = round(animated_health)
+	bar.value = round_value
 
 func _on_player_energy_updated(health):
-	tween.interpolate_property(self, "animated_health", animated_health, health, 0.3, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.interpolate_property(self, "animated_health", animated_health, health, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT)
 	if not tween.is_active():
     	tween.start()

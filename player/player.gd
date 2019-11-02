@@ -16,8 +16,8 @@ const SHOOT_TIME_SHOW_WEAPON = 0.2
 var linear_vel = Vector2()
 var shoot_time = 99999 # time since last shot
 
-const ENERGY_MAX = 100
-var ENERGY_CUR = 100
+const ENERGY_MAX = 20
+var ENERGY_CUR = ENERGY_MAX
 
 var anim = ""
 
@@ -55,6 +55,7 @@ func _physics_process(delta):
 	if on_floor and Input.is_action_just_pressed("jump"):
 		linear_vel.y = -JUMP_SPEED
 		($SoundJump as AudioStreamPlayer2D).play()
+		emit_signal("energy_updated", rand_range(0, ENERGY_MAX))
 
 	# Shooting
 	if Input.is_action_just_pressed("shoot"):
