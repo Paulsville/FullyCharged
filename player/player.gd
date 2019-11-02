@@ -2,7 +2,6 @@ extends KinematicBody2D
 
 class_name Player
 
-
 const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
@@ -27,9 +26,8 @@ var anim = ""
 
 onready var sprite = $Sprite
 
-var Bullet = preload("res://player/Bullet.tscn")
+var Bullet = preload("res://bullet/Bullet.tscn")
 var Bomb = preload("res://player/Bomb.tscn")
-
 
 func _physics_process(delta):
 	shoot_time += delta
