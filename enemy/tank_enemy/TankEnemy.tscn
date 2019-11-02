@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 250, 60 )
 
-[node name="TankEnemy" index="0" instance=ExtResource( 1 )]
+[node name="TankEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="BulletShoot" type="Position2D" parent="Sprite" index="0"]
