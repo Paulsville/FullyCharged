@@ -21,6 +21,8 @@ const ENERGY_MAX = 100
 var ENERGY_CUR = 100
 var dead = false
 
+signal energy_updated
+
 var anim = ""
 
 onready var sprite = $Sprite
@@ -106,3 +108,7 @@ func _physics_process(delta):
 	if new_anim != anim:
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
+		
+func on_water_entry():
+	emit_signal("energy_updated", (0 - ENERGY_CUR))
+	ENERGY_CUR = 0
