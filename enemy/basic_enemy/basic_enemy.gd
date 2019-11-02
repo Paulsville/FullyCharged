@@ -14,7 +14,7 @@ func _physics_process(delta):
 
 		sprite.scale = Vector2(direction, 1.0)
 		new_anim = "walk"
-	else:
+	elif state == STATE_KILLED:
 		new_anim = "explode"
 
 	if anim != new_anim:

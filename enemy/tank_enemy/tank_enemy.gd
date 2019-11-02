@@ -21,6 +21,8 @@ func _ready():
 	state = STATE_WALKING
 
 func _physics_process(delta):
+	var new_anim = "idle"
+	
 	if state == STATE_WALKING:
 		direction = walk(delta)
 		sprite.scale = Vector2(direction, 1.0)
@@ -29,6 +31,7 @@ func _physics_process(delta):
 				shoot()
 			elif direction < 0 and Player in DetectPlayerLeft.get_overlapping_bodies():
 				shoot()
+		new_anim = "walk"
 	elif state == STATE_SHOOTING:
 		if shoot_timer < 0:
 			var bullet = Bullet.instance()
@@ -42,9 +45,16 @@ func _physics_process(delta):
 			reload_timer = RELOAD_TIME
 		else:
 			shoot_timer -= delta
+		new_anim = "idle"
+	elif state == STATE_KILLED:
+		new_anim = "explode"
 			
 	if reload_timer > 0:
 		reload_timer -= delta
+	
+	if anim != new_anim:
+		anim = new_anim
+		($Anim as AnimationPlayer).play(anim)
 			
 func shoot():
 	shoot_timer = SHOOT_DELAY
