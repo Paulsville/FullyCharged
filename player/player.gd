@@ -23,7 +23,7 @@ var anim = ""
 
 onready var sprite = $Sprite
 
-var Bullet = preload("res://player/Bullet.tscn")
+var Bullet = preload("res://bullet/Bullet.tscn")
 var Bomb = preload("res://player/Bomb.tscn")
 
 
