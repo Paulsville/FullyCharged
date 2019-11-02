@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://coin/coin.gd"
 }, {
+"base": "RigidBody2D",
+"class": "EndPoint",
+"language": "GDScript",
+"path": "res://End point/EndPoint.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
@@ -48,6 +53,7 @@ _global_script_class_icons={
 "Bomb": "",
 "Bullet": "",
 "Coin": "",
+"EndPoint": "",
 "Enemy": "",
 "MovingPlatform": "",
 "Player": "",
