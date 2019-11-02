@@ -16,5 +16,4 @@ position = Vector2( 3331.72, 274.911 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3580.84, 388.121 )
-
 next_scene = "Stage3"
