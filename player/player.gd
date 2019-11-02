@@ -26,9 +26,17 @@ signal energy_updated
 var anim = ""
 
 onready var sprite = $Sprite
+onready var respawn_timer = $DeathTimer
+onready var label = $Camera/DeathLabel
+onready var stop_timer = $StopTimer
 
 var Bullet = preload("res://bullet/Bullet.tscn")
 var Bomb = preload("res://player/Bomb.tscn")
+
+func _ready():
+	label.visible = false
+	respawn_timer.connect("timeout", self, "respawn")
+	stop_timer.connect("timeout", self, "stop_player")
 
 func _physics_process(delta):
 	shoot_time += delta
@@ -48,18 +56,11 @@ func _physics_process(delta):
 		target_speed *= WALK_SPEED
 		linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 		
-<<<<<<< Updated upstream
 		if Input.is_action_just_pressed("jump") and on_floor:
-			print(on_floor)
 			global_position.y -= 5
 			linear_vel.y =- JUMP_SPEED
-			print(linear_vel.y)
-=======
-		if on_floor and Input.is_action_just_pressed("jump"):
-			global_position.y -= 5
-			linear_vel.y -= JUMP_SPEED
->>>>>>> Stashed changes
 			($SoundJump as AudioStreamPlayer2D).play()
+
 		
 		if Input.is_action_just_pressed("shoot"):
 			var bullet = Bullet.instance()
@@ -78,8 +79,16 @@ func _physics_process(delta):
 			get_parent().add_child(bomb)
 			update_energy(-5)
 	
-	if ENERGY_CUR <= 0:
-		get_tree().reload_current_scene()
+
+	if ENERGY_CUR <= 0 and !dead:
+		dead = true
+		respawn_timer.start()
+		stop_timer.start()
+		var label_pos = label.get_position()
+		label_pos.x = label_pos.x - 50
+		label_pos.y = label_pos.y - 80
+		label.set_position(label_pos)
+		label.visible = true
 	
 		### ANIMATION ###
 	
@@ -110,9 +119,14 @@ func _physics_process(delta):
 	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 		new_anim += "_weapon"
 	
+	if dead:
+		new_anim = "crouch"
+	
 	if new_anim != anim:
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
+		if dead:
+			($Anim as AnimationPlayer).stop()
 		
 func on_water_entry():
 	update_energy(0-ENERGY_CUR)
@@ -128,12 +142,14 @@ func on_hitbox_entered(body):
 		
 func update_energy(value):
 	ENERGY_CUR += value
-	print(ENERGY_CUR)
-<<<<<<< Updated upstream
-	emit_signal("energy_updated", value)
-=======
 	emit_signal("energy_updated", value)
 
 func on_invincible_timeout():
 	invincible = false
->>>>>>> Stashed changes
+	
+func respawn():
+	label.visible = false
+	get_tree().reload_current_scene()
+	
+func stop_player():
+	linear_vel.x = 0

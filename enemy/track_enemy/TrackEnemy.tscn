@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enemy/track_enemy/track_enemy.gd" type="Script" id=2]
+[ext_resource path="res://enemy/track_enemy/track_enemy.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="TrackEnemy" index="0" instance=ExtResource( 1 )]
+scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 3 )
+hframes = 1
+
+[node name="DetectTrack" type="Area2D" parent="." index="8"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectTrack" index="0"]
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="." index="12"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_tween_completed"]
