@@ -47,8 +47,11 @@ func _physics_process(delta):
 		target_speed *= WALK_SPEED
 		linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 		
-		if on_floor and Input.is_action_just_pressed("jump"):
-			linear_vel.y = -JUMP_SPEED
+		if Input.is_action_just_pressed("jump") and on_floor:
+			print(on_floor)
+			global_position.y -= 5
+			linear_vel.y =- JUMP_SPEED
+			print(linear_vel.y)
 			($SoundJump as AudioStreamPlayer2D).play()
 		
 		if Input.is_action_just_pressed("shoot"):
