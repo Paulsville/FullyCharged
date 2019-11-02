@@ -4,7 +4,7 @@ const STATE_WALKING = 2
 const STATE_SHOOTING = 3
 
 const SHOOT_DELAY = 0.5
-const BULLET_VELOCITY = 3000
+const BULLET_VELOCITY = 1000
 const RELOAD_TIME = 3
 
 onready var DetectPlayerLeft = $DetectPlayerLeft

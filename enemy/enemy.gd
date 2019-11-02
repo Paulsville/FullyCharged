@@ -10,9 +10,15 @@ const STATE_IDLE = 0
 const STATE_KILLED = 1
 const WALK_SPEED = 70 
 
+const IS_ENEMY = true
+
 var linear_velocity = Vector2()
-var direction = -1
 var anim = ""
+
+enum DIRECTIONS { left, right }
+
+export(DIRECTIONS) var starting_direction = DIRECTIONS.left 
+var direction
 
 # state machine
 var state = STATE_IDLE
@@ -23,15 +29,21 @@ onready var DetectFloorRight = $DetectFloorRight
 onready var DetectWallRight = $DetectWallRight
 onready var sprite = $Sprite
 
+func _ready():
+	if starting_direction == 0:
+		direction = -1
+	else:
+		direction = 1
+
 func walk(delta):
 	linear_velocity += GRAVITY_VEC * delta
 	linear_velocity.x = direction * WALK_SPEED
 	linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
-
-	if not DetectFloorLeft.is_colliding() or DetectWallLeft.is_colliding():
+	
+	if not DetectFloorLeft.is_colliding() and DetectFloorRight.is_colliding() or DetectWallLeft.is_colliding():
 		direction = 1.0
 
-	if not DetectFloorRight.is_colliding() or DetectWallRight.is_colliding():
+	if not DetectFloorRight.is_colliding() and DetectFloorLeft.is_colliding() or DetectWallRight.is_colliding():
 		direction = -1.0
 		
 	return direction
