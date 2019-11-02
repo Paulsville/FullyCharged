@@ -288,3 +288,6 @@ shape = SubResource( 12 )
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="StopTimer" type="Timer" parent="."]
+one_shot = true
