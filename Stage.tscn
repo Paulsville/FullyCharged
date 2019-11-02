@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://coin/Coin.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=7]
 [ext_resource path="res://audio/music.ogg" type="AudioStream" id=8]
+[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=9]
 
 [node name="Stage" type="Node"]
 
@@ -21,6 +22,7 @@ __meta__ = {
 }
 
 [node name="Coins" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Coin1" parent="Coins" instance=ExtResource( 2 )]
 position = Vector2( 672, 1179 )
@@ -149,6 +151,7 @@ position = Vector2( 4236.75, 541.058 )
 position = Vector2( 4172.75, 541.058 )
 
 [node name="Props" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="MovingPlatform" parent="Props" instance=ExtResource( 3 )]
 position = Vector2( 1451.86, 742.969 )
@@ -217,6 +220,7 @@ position = Vector2( 1339.63, 967.879 )
 position = Vector2( 299.516, 1048.31 )
 
 [node name="Enemies" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Enemy1" parent="Enemies" instance=ExtResource( 6 )]
 position = Vector2( 734.693, 1064.22 )
@@ -266,3 +270,8 @@ autowrap = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="EnergyBar" parent="GUI" instance=ExtResource( 9 )]
+[connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_player_energy_updated"]

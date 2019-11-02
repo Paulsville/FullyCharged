@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 class_name Player
 
+signal energy_updated
 
 const GRAVITY_VEC = Vector2(0, 900)
 const FLOOR_NORMAL = Vector2(0, -1)
@@ -15,13 +16,15 @@ const SHOOT_TIME_SHOW_WEAPON = 0.2
 var linear_vel = Vector2()
 var shoot_time = 99999 # time since last shot
 
+const ENERGY_MAX = 100
+var ENERGY_CUR = 100
+
 var anim = ""
 
 # cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = $Sprite
 # cache bullet for fast access
 var Bullet = preload("res://player/Bullet.tscn")
-
 
 func _physics_process(delta):
 	# Increment counters
