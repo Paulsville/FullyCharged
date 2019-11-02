@@ -51,6 +51,7 @@ func _physics_process(delta):
 			global_position.y -= 5
 			linear_vel.y =- JUMP_SPEED
 			($SoundJump as AudioStreamPlayer2D).play()
+
 		
 		if Input.is_action_just_pressed("shoot"):
 			var bullet = Bullet.instance()
@@ -120,5 +121,6 @@ func on_hitbox_entered(body):
 		linear_vel *= -1
 		
 func update_energy(value):
-	ENERGY_CUR -= value
+	ENERGY_CUR += value
+	print(ENERGY_CUR)
 	emit_signal("energy_updated", value)
