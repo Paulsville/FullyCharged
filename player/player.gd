@@ -111,6 +111,7 @@ func on_water_entry():
 func on_hitbox_entered(body):
 	if body.IS_ENEMY:
 		update_energy(-25)
+		linear_vel *= -1
 		
 func update_energy(value):
 	ENERGY_CUR -= value
