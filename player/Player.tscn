@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://player/player.gd" type="Script" id=1]
 [ext_resource path="res://player/robot_demo.png" type="Texture" id=2]
@@ -186,6 +186,10 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=11]
 height = 44.4787
 
+[sub_resource type="CapsuleShape2D" id=12]
+radius = 17.412
+height = 30.1547
+
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -264,3 +268,9 @@ visibility_mode = 1
 
 [node name="Node" type="Node" parent="."]
 script = ExtResource( 9 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( -6.09427, 8.96214 )
+shape = SubResource( 12 )

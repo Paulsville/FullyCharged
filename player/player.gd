@@ -110,3 +110,11 @@ func _physics_process(delta):
 func on_water_entry():
 	emit_signal("energy_updated", (0 - ENERGY_CUR))
 	ENERGY_CUR = 0
+
+func on_hitbox_entered(body):
+	if body.IS_ENEMY:
+		update_energy(-25)
+		
+func update_energy(value):
+	ENERGY_CUR -= value
+	emit_signal("energy_updated", value)
