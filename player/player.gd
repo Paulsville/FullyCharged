@@ -25,9 +25,17 @@ signal energy_updated
 var anim = ""
 
 onready var sprite = $Sprite
+onready var respawn_timer = $DeathTimer
+onready var label = $Camera/DeathLabel
+onready var stop_timer = $StopTimer
 
 var Bullet = preload("res://bullet/Bullet.tscn")
 var Bomb = preload("res://player/Bomb.tscn")
+
+func _ready():
+	label.visible = false
+	respawn_timer.connect("timeout", self, "respawn")
+	stop_timer.connect("timeout", self, "stop_player")
 
 func _physics_process(delta):
 	shoot_time += delta
@@ -71,8 +79,15 @@ func _physics_process(delta):
 			update_energy(-5)
 	
 
-	if ENERGY_CUR <= 0:
+	if ENERGY_CUR <= 0 and !dead:
 		dead = true
+		respawn_timer.start()
+		stop_timer.start()
+		var label_pos = label.get_position()
+		label_pos.x = label_pos.x - 50
+		label_pos.y = label_pos.y - 80
+		label.set_position(label_pos)
+		label.visible = true
 	
 		### ANIMATION ###
 	
@@ -104,7 +119,7 @@ func _physics_process(delta):
 		new_anim += "_weapon"
 	
 	if dead:
-		new_anim = "idle"
+		new_anim = "crouch"
 	
 	if new_anim != anim:
 		anim = new_anim
@@ -123,3 +138,10 @@ func on_hitbox_entered(body):
 func update_energy(value):
 	ENERGY_CUR += value
 	emit_signal("energy_updated", value)
+	
+func respawn():
+	label.visible = false
+	get_tree().reload_current_scene()
+	
+func stop_player():
+	linear_vel.x = 0
