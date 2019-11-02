@@ -8,7 +8,10 @@ const FLOOR_NORMAL = Vector2(0, -1)
 
 const STATE_IDLE = 0
 const STATE_KILLED = 1
-const WALK_SPEED = 70 
+const WALK_SPEED = 70
+const HEALTH_MAX = 10
+
+var HEALTH_CUR = HEALTH_MAX
 
 const IS_ENEMY = true
 
@@ -48,5 +51,9 @@ func walk(delta):
 		
 	return direction
 
-func hit_by_bullet():
-	state = STATE_KILLED
+func hit(damage):
+	HEALTH_CUR -= damage
+	print(HEALTH_CUR)
+	if HEALTH_CUR <= 0:
+		state = STATE_KILLED
+		get_parent().remove_child(self)

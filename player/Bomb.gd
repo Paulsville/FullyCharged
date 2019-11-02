@@ -7,8 +7,8 @@ func _on_Timer_timeout():
 		
 func explode():
 	for body in ($BombExplosionArea as Area2D).get_overlapping_bodies():
-		if body.has_method("hit_by_bullet"):
-			body.call("hit_by_bullet")
+		if body.has_method("hit"):
+			body.hit(5)
 	get_parent().remove_child(self)
 	
 	
