@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Bomb",
 "language": "GDScript",
-"path": "res://player/Bomb.gd"
+"path": "res://player/bomb.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Bullet",
