@@ -15,5 +15,5 @@ tile_data = PoolIntArray( 196624, 536870913, 0, 196625, 0, 0, 196626, 0, 0, 1966
 position = Vector2( 3331.72, 274.911 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3581.89, 345.542 )
+position = Vector2( 3580.84, 388.121 )
 next_scene = "Stage3"
