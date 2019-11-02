@@ -48,10 +48,8 @@ func _physics_process(delta):
 		linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 		
 		if Input.is_action_just_pressed("jump") and on_floor:
-			print(on_floor)
 			global_position.y -= 5
 			linear_vel.y =- JUMP_SPEED
-			print(linear_vel.y)
 			($SoundJump as AudioStreamPlayer2D).play()
 		
 		if Input.is_action_just_pressed("shoot"):
@@ -71,9 +69,9 @@ func _physics_process(delta):
 			get_parent().add_child(bomb)
 			update_energy(-5)
 	
+
 	if ENERGY_CUR <= 0:
 		dead = true
-		linear_vel.x = 0
 	
 		### ANIMATION ###
 	
@@ -104,12 +102,17 @@ func _physics_process(delta):
 	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
 		new_anim += "_weapon"
 	
+	if dead:
+		new_anim = "idle"
+	
 	if new_anim != anim:
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
+		if dead:
+			($Anim as AnimationPlayer).stop()
 		
 func on_water_entry():
-	update_energy(0-ENERGY_CUR)
+	update_energy(ENERGY_CUR)
 
 func on_hitbox_entered(body):
 	if body.IS_ENEMY:
