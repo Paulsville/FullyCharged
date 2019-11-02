@@ -187,7 +187,7 @@ tracks/0/keys = {
 [sub_resource type="CapsuleShape2D" id=12]
 height = 44.4787
 
-[sub_resource type="CapsuleShape2D" id=12]
+[sub_resource type="CapsuleShape2D" id=13]
 radius = 36.4117
 height = 2.19275
 
