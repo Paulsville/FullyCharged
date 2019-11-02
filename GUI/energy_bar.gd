@@ -9,7 +9,7 @@ func _ready():
 	var player_max_health = $"../../Player".ENERGY_MAX
 	bar.max_value = player_max_health
 	animated_health = player_max_health
-	
+
 func _process(delta):
 	var round_value = round(animated_health)
 	bar.value = round_value
