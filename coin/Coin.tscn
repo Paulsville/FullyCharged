@@ -102,7 +102,7 @@ emission_sphere_radius = 10.0
 flag_disable_z = true
 gravity = Vector3( 0, 90, 0 )
 initial_velocity = 121.98
-angular_velocity = -2.49891e+38
+angular_velocity = -2.49891e+038
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.2
@@ -137,5 +137,4 @@ texture = ExtResource( 4 )
 
 [node name="Enabler" type="VisibilityEnabler2D" parent="."]
 pause_particles = false
-
 [connection signal="body_entered" from="." to="." method="_on_coin_body_enter"]
