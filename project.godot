@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Bomb",
 "language": "GDScript",
-"path": "res://player/bomb.gd"
+"path": "res://player/Bomb.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://player/bullet.gd"
+"path": "res://bullet/bullet.gd"
 }, {
 "base": "Area2D",
 "class": "Coin",
