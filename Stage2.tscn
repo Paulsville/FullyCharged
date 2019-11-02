@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://TileSet.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://End point/EndPoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Stage3.tscn" type="PackedScene" id=4]
 
 [node name="Stage" type="Node2D"]
 
@@ -17,4 +16,3 @@ position = Vector2( 128.569, 206.49 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3581.89, 345.542 )
-next_scene = ExtResource( 4 )
