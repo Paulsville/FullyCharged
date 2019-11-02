@@ -34,7 +34,7 @@ func _physics_process(delta):
 			var bullet = Bullet.instance()
 			bullet.position = ($Sprite/BulletShoot as Position2D).global_position # use node for shoot position
 			bullet.linear_velocity = Vector2(direction * BULLET_VELOCITY, 0)
-			bullet.add_collision_exception_with(self) # don't want player to collide with bullet
+			bullet.add_collision_exception_with(self) # don't want enemy to collide with bullet
 			get_parent().add_child(bullet) # don't want bullet to move with me, so add it as child of parent
 			# sound?
 			shoot_timer = 0
