@@ -12,6 +12,7 @@ blend_mode = 1
 flag_disable_z = true
 spread = 0.0
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 0.8
@@ -90,6 +91,5 @@ autostart = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/shutdown = SubResource( 6 )
-
 [connection signal="body_entered" from="." to="." method="_on_bullet_body_enter"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
