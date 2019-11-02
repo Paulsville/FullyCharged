@@ -7,7 +7,7 @@
 extents = Vector2( 3.99389, 11.2863 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 93.8393
+radius = 108.701
 
 [node name="Bomb" type="RigidBody2D"]
 script = ExtResource( 1 )
@@ -31,5 +31,4 @@ space_override = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BombExplosionArea"]
 shape = SubResource( 2 )
-disabled = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

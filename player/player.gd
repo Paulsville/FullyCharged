@@ -20,11 +20,13 @@ const ENERGY_MAX = 100
 var ENERGY_CUR = 100
 var dead = false
 
+signal energy_updated
+
 var anim = ""
 
 onready var sprite = $Sprite
 
-var Bullet = preload("res://player/Bullet.tscn")
+var Bullet = preload("res://bullet/Bullet.tscn")
 var Bomb = preload("res://player/Bomb.tscn")
 
 func _physics_process(delta):
@@ -57,16 +59,14 @@ func _physics_process(delta):
 			get_parent().add_child(bullet) # don't want bullet to move with me, so add it as child of parent
 			($SoundShoot as AudioStreamPlayer2D).play()
 			shoot_time = 0
-			emit_signal("energy_updated", 20)
-			ENERGY_CUR -= 20
+			update_energy(-5)
 		
 		if Input.is_action_just_pressed("throw"):
 			var bomb = Bomb.instance()
 			bomb.position = ($Sprite/BulletShoot as Position2D).global_position
 			bomb.linear_velocity = Vector2(sprite.scale.x * BOMB_VELOCITY_X, sprite.scale.y * BOMB_VELOCITY_Y * -1)
 			get_parent().add_child(bomb)
-			emit_signal("energy_updated", 50)
-			ENERGY_CUR -= 5
+			update_energy(-5)
 	
 	if ENERGY_CUR <= 0:
 		dead = true
@@ -104,3 +104,14 @@ func _physics_process(delta):
 	if new_anim != anim:
 		anim = new_anim
 		($Anim as AnimationPlayer).play(anim)
+		
+func on_water_entry():
+	update_energy(0-ENERGY_CUR)
+
+func on_hitbox_entered(body):
+	if body.IS_ENEMY:
+		update_energy(-25)
+		
+func update_energy(value):
+	ENERGY_CUR -= value
+	emit_signal("energy_updated", value)

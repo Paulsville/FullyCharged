@@ -17,12 +17,17 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://player/bullet.gd"
+"path": "res://bullet/bullet.gd"
 }, {
 "base": "Area2D",
 "class": "Coin",
 "language": "GDScript",
 "path": "res://coin/coin.gd"
+}, {
+"base": "RigidBody2D",
+"class": "EndPoint",
+"language": "GDScript",
+"path": "res://End point/EndPoint.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Enemy",
@@ -38,20 +43,27 @@ _global_script_classes=[ {
 "class": "Player",
 "language": "GDScript",
 "path": "res://player/player.gd"
+}, {
+"base": "Node",
+"class": "Water",
+"language": "GDScript",
+"path": "res://Water/Water.gd"
 } ]
 _global_script_class_icons={
 "Bomb": "",
 "Bullet": "",
 "Coin": "",
+"EndPoint": "",
 "Enemy": "",
 "MovingPlatform": "",
-"Player": ""
+"Player": "",
+"Water": ""
 }
 
 [application]
 
 config/name="Platformer 2D"
-run/main_scene="res://Stage3.tscn"
+run/main_scene="res://Stage2.tscn"
 config/icon="res://icon.png"
 target_fps="60"
 
