@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://platform/OneWayPlatform.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DeathZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=7]
 
 [node name="Stage" type="Node2D"]
 
@@ -42,6 +43,7 @@ position = Vector2( 96.1006, 138.33 )
 position = Vector2( 1920, 250 )
 
 [node name="DeathZones" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="DeathZone" parent="DeathZones" instance=ExtResource( 6 )]
 position = Vector2( 1824, 384 )
@@ -52,3 +54,8 @@ height = 2
 position = Vector2( 352, 384 )
 width = 3
 height = 2
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="EnergyBar" parent="GUI" instance=ExtResource( 7 )]
+[connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
