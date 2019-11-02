@@ -113,7 +113,7 @@ func _physics_process(delta):
 			($Anim as AnimationPlayer).stop()
 		
 func on_water_entry():
-	update_energy(ENERGY_CUR)
+	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
 	if body.IS_ENEMY:
@@ -122,5 +122,4 @@ func on_hitbox_entered(body):
 		
 func update_energy(value):
 	ENERGY_CUR += value
-	print(ENERGY_CUR)
 	emit_signal("energy_updated", value)
