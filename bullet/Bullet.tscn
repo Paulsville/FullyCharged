@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://bullet/bullet.gd" type="Script" id=1]
-[ext_resource path="res://bullet/bullet.png" type="Texture" id=2]
+[ext_resource path="res://bullet/laserbullet.png" type="Texture" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -19,7 +19,6 @@ scale = 0.8
 color = Color( 1, 1, 1, 0.705882 )
 
 [sub_resource type="StreamTexture" id=4]
-load_path = "res://.import/bullet.png-5615cb9904aab8db60fe6f48e996475f.stex"
 
 [sub_resource type="CanvasItemMaterial" id=5]
 
