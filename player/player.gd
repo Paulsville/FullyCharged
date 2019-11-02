@@ -10,13 +10,15 @@ const WALK_SPEED = 250 # pixels/sec
 const JUMP_SPEED = 480
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 5000
-const BOMB_VELOCITY = 100
+const BOMB_VELOCITY_X = 250
+const BOMB_VELOCITY_Y = 500
 const SHOOT_TIME_SHOW_WEAPON = 0.2
 
 var linear_vel = Vector2()
 var shoot_time = 99999 # time since last shot
 
-var ENERGY = 100
+const ENERGY_MAX = 100
+var ENERGY_CUR = 100
 var dead = false
 
 var anim = ""
@@ -57,16 +59,18 @@ func _physics_process(delta):
 			get_parent().add_child(bullet) # don't want bullet to move with me, so add it as child of parent
 			($SoundShoot as AudioStreamPlayer2D).play()
 			shoot_time = 0
-			ENERGY -= 50
+			emit_signal("energy_updated", 20)
+			ENERGY_CUR -= 20
 		
 		if Input.is_action_just_pressed("throw"):
 			var bomb = Bomb.instance()
 			bomb.position = ($Sprite/BulletShoot as Position2D).global_position
-			bomb.linear_velocity = Vector2(sprite.scale.x * BOMB_VELOCITY, 0)
+			bomb.linear_velocity = Vector2(sprite.scale.x * BOMB_VELOCITY_X, sprite.scale.y * BOMB_VELOCITY_Y * -1)
 			get_parent().add_child(bomb)
-			ENERGY -= 50
+			emit_signal("energy_updated", 50)
+			ENERGY_CUR -= 5
 	
-	if ENERGY <= 0:
+	if ENERGY_CUR <= 0:
 		dead = true
 		linear_vel.x = 0
 	
