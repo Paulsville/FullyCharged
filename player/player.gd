@@ -10,6 +10,7 @@ const WALK_SPEED = 250 # pixels/sec
 const JUMP_SPEED = 480
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 5000
+const BOMB_VELOCITY = 100
 const SHOOT_TIME_SHOW_WEAPON = 0.2
 
 var linear_vel = Vector2()
@@ -20,43 +21,34 @@ var dead = false
 
 var anim = ""
 
-# cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = $Sprite
-# cache bullet for fast access
+
 var Bullet = preload("res://player/Bullet.tscn")
+var Bomb = preload("res://player/Bomb.tscn")
 
 
 func _physics_process(delta):
-	# Increment counters
 	shoot_time += delta
 
 	### MOVEMENT ###
-
-	# Apply gravity
 	linear_vel += delta * GRAVITY_VEC
-	# Move and slide
 	linear_vel = move_and_slide(linear_vel, FLOOR_NORMAL, SLOPE_SLIDE_STOP)
-	# Detect if we are on floor - only works if called *after* move_and_slide
 	var on_floor = is_on_floor()
 
 	### CONTROL ###
-		# Horizontal movement
 	var target_speed = 0
 	if !dead:
 		if Input.is_action_pressed("move_left"):
 			target_speed -= 1
 		if Input.is_action_pressed("move_right"):
 			target_speed += 1
-		
 		target_speed *= WALK_SPEED
 		linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 		
-			# Jumping
 		if on_floor and Input.is_action_just_pressed("jump"):
 			linear_vel.y = -JUMP_SPEED
 			($SoundJump as AudioStreamPlayer2D).play()
 		
-			# Shooting
 		if Input.is_action_just_pressed("shoot"):
 			var bullet = Bullet.instance()
 			bullet.position = ($Sprite/BulletShoot as Position2D).global_position # use node for shoot position
@@ -65,7 +57,14 @@ func _physics_process(delta):
 			get_parent().add_child(bullet) # don't want bullet to move with me, so add it as child of parent
 			($SoundShoot as AudioStreamPlayer2D).play()
 			shoot_time = 0
-			ENERGY -= 10
+			ENERGY -= 50
+		
+		if Input.is_action_just_pressed("throw"):
+			var bomb = Bomb.instance()
+			bomb.position = ($Sprite/BulletShoot as Position2D).global_position
+			bomb.linear_velocity = Vector2(sprite.scale.x * BOMB_VELOCITY, 0)
+			get_parent().add_child(bomb)
+			ENERGY -= 50
 	
 	if ENERGY <= 0:
 		dead = true
