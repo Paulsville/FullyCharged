@@ -142,11 +142,11 @@ func on_hitbox_entered(body):
 			timer.start()
 		
 func update_energy(value):
-	if ENERGY_CUR < (ENERGY_MAX - value):
-		ENERGY_CUR += value
-	else:
-		ENERGY_CUR = ENERGY_MAX
-	emit_signal("energy_updated", value)
+	var energy = value
+	if ENERGY_CUR + value > ENERGY_MAX:
+		energy = ENERGY_MAX - ENERGY_CUR
+	ENERGY_CUR += energy
+	emit_signal("energy_updated", energy)
 
 func on_invincible_timeout():
 	invincible = false
