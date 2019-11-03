@@ -17,6 +17,7 @@ onready var Tween = $Tween
 
 func _ready():
 	HEALTH_CUR = 1
+	$Anim.play('spin')
 
 func _physics_process(delta):
 	if state == STATE_IDLE:
@@ -25,7 +26,8 @@ func _physics_process(delta):
 		var track
 		for area in areas:
 			track = area.get_owner()
-			if track.IS_TRACK and track != last_track:
+			if track.get('IS_TRACK') != null and track != last_track:
+				print('aaa')
 				found_track = true
 				move(track)
 

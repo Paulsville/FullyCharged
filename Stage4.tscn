@@ -24,15 +24,15 @@ transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
 [node name="Tracks" type="Node2D" parent="."]
 
 [node name="Track" parent="Tracks" instance=ExtResource( 4 )]
-position = Vector2( 2848.99, 452.164 )
+position = Vector2( 2848.39, 448 )
 scale = Vector2( 4, 4 )
 
 [node name="Track2" parent="Tracks" instance=ExtResource( 4 )]
-position = Vector2( 2848.99, 581.172 )
+position = Vector2( 2848.39, 576 )
 scale = Vector2( 4, 4 )
 
 [node name="Track3" parent="Tracks" instance=ExtResource( 4 )]
-position = Vector2( 2848.99, 324.809 )
+position = Vector2( 2848.39, 320 )
 scale = Vector2( 4, 4 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
@@ -42,14 +42,14 @@ scale = Vector2( 4, 4 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="TrackEnemy" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 2848.99, 442.24 )
+position = Vector2( 2848.39, 576 )
 speed = 3.0
 
 [node name="TrackEnemy2" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 2848.99, 506.24 )
+position = Vector2( 2848.39, 448 )
 speed = 3.0
 
 [node name="TrackEnemy3" parent="Enemies" instance=ExtResource( 6 )]
-position = Vector2( 2848.99, 378.24 )
+position = Vector2( 2848.39, 320 )
 speed = 3.0
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
