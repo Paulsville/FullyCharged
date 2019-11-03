@@ -19,7 +19,7 @@ var shoot_time = 99999 # time since last shot
 const ENERGY_MAX = 100
 var ENERGY_CUR = 100
 var dead = false
-var invincible = true
+var invincible = false
 
 signal energy_updated
 
@@ -132,8 +132,10 @@ func on_water_entry():
 	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
-	if body.get_parent().has_method("IS_ENEMY"):
-		if body.get_parent().IS_ENEMY and !invincible:
+	if body.get_parent().get("IS_ENEMY") != null:
+		if !invincible and body.get_parent().IS_ENEMY :
+			print(body.get_parent().IS_ENEMY)
+			print(!invincible)
 			update_energy(-25)
 			linear_vel = 300 * (global_position - body.get_parent().global_position)/(body.get_parent().global_position - global_position)
 			print(linear_vel)

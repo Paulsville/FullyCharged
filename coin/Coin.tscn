@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://coin/coin.gd" type="Script" id=1]
 [ext_resource path="res://coin/coin.png" type="Texture" id=2]
 [ext_resource path="res://audio/sound_coin.wav" type="AudioStream" id=3]
-[ext_resource path="res://player/bullet.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "spin"
@@ -133,7 +132,6 @@ lifetime = 2.0
 explosiveness = 1.0
 draw_order = 65793
 process_material = SubResource( 6 )
-texture = ExtResource( 4 )
 
 [node name="Enabler" type="VisibilityEnabler2D" parent="."]
 pause_particles = false

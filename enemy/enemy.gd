@@ -9,7 +9,7 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const STATE_IDLE = 0
 const STATE_KILLED = 1
 const WALK_SPEED = 70
-const HEALTH_MAX = 10
+const HEALTH_MAX = 5
 
 var HEALTH_CUR = HEALTH_MAX
 
