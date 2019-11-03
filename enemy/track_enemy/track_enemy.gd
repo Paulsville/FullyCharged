@@ -27,7 +27,6 @@ func _physics_process(delta):
 		for area in areas:
 			track = area.get_owner()
 			if track.get('IS_TRACK') != null and track != last_track:
-				print('aaa')
 				found_track = true
 				move(track)
 
