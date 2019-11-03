@@ -2,7 +2,7 @@
 
 [ext_resource path="res://enemy/enemy.gd" type="Script" id=1]
 [ext_resource path="res://enemy/enemy.png" type="Texture" id=2]
-[ext_resource path="res://bullet/bullet.png" type="Texture" id=3]
+[ext_resource path="res://bullet/laserbullet.png" type="Texture" id=3]
 [ext_resource path="res://audio/sound_hit.wav" type="AudioStream" id=4]
 [ext_resource path="res://audio/sound_explode.wav" type="AudioStream" id=5]
 
