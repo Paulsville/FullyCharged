@@ -26,7 +26,7 @@ extents = Vector2( 8, 8 )
 [sub_resource type="CircleShape2D" id=3]
 radius = 16.1265
 
-[node name="TrackEnemy" index="0" instance=ExtResource( 1 )]
+[node name="TrackEnemy" instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )
 script = ExtResource( 2 )
 
@@ -35,6 +35,7 @@ anims/spin = SubResource( 1 )
 
 [node name="Sprite" parent="." index="2"]
 rotation = 3.43952
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 hframes = 1
 
