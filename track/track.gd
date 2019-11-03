@@ -37,7 +37,7 @@ func set_type(value):
 	type = value
 	if Engine.editor_hint:
 		print('changed track type')
-		if get_node("Sprite"):
+		if has_node("Sprite"):
 			set_region(get_node("Sprite"))
 			
 func set_region(sprite):
