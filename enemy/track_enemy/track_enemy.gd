@@ -15,6 +15,9 @@ onready var DetectTrack = $DetectTrack
 onready var TrackCollision = $DetectTrack/CollisionShape2D
 onready var Tween = $Tween
 
+func _ready():
+	HEALTH_CUR = 1
+
 func _physics_process(delta):
 	if state == STATE_IDLE:
 		var areas = DetectTrack.get_overlapping_areas()
