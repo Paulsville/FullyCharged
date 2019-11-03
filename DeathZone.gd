@@ -11,7 +11,7 @@ func _ready():
 	var collision = CollisionShape2D.new()
 	add_child(collision)
 	var shape = RectangleShape2D.new()
-	shape.extents = Vector2(TILE_SIZE * width, TILE_SIZE * height)
+	shape.extents = Vector2(TILE_SIZE * width / 2, TILE_SIZE * height / 2)
 	collision.shape = shape
 	connect("area_shape_entered", self, "_on_Detection_area_entered")
 
