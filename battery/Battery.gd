@@ -1,12 +1,11 @@
 extends Area2D
 
-class_name Coin
-
+class_name Battery
 
 var taken = false
 
-func on_coin_body_enter(body):
+func on_battery_body_enter(body):
 	if not taken and body is Player:
-		($Anim as AnimationPlayer).play("taken")
 		taken = true
 		body.update_energy(20)
+		get_parent().remove_child(self)

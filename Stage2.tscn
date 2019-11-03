@@ -1,22 +1,17 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=5 format=2]
-=======
 [gd_scene load_steps=10 format=2]
->>>>>>> Stashed changes
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://End point/EndPoint.tscn" type="PackedScene" id=3]
-[ext_resource path="res://enemy/tank_enemy/TankEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://DeathZone.tscn" type="PackedScene" id=4]
-<<<<<<< Updated upstream
-=======
+
 [ext_resource path="res://enemy/basic_enemy/BasicEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemy/tank_enemy/TankEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://battery/Battery.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
+
 [ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=9]
->>>>>>> Stashed changes
+
 
 [node name="Stage" type="Node2D"]
 
@@ -29,16 +24,8 @@ tile_data = PoolIntArray( 196624, 536870913, 0, 196625, 0, 0, 196626, 0, 0, 1966
 position = Vector2( 120, 220 )
 
 [node name="EndPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3580.84, 388.121 )
+position = Vector2( 3704.54, 356.617 )
 next_scene = "Stage3"
-
-[node name="EndPoint" parent="." instance=ExtResource( 3 )]
-position = Vector2( 3580.84, 388.121 )
-next_scene = "Stage3"
-
-[node name="TankEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 728.045, 214.042 )
-scale = Vector2( 3, 3 )
 
 [node name="DeathZones" type="Node2D" parent="."]
 
@@ -46,11 +33,9 @@ scale = Vector2( 3, 3 )
 position = Vector2( 928, 416 )
 width = 3
 height = 1
-<<<<<<< Updated upstream
-=======
 
 [node name="Node2D" type="Node2D" parent="."]
-editor/display_folded = true
+
 position = Vector2( 2782.53, 360.76 )
 
 [node name="BasicEnemy" parent="Node2D" instance=ExtResource( 5 )]
@@ -74,4 +59,3 @@ position = Vector2( 2368.32, 345.728 )
 
 [node name="EnergyBar" parent="GUI" instance=ExtResource( 9 )]
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
->>>>>>> Stashed changes

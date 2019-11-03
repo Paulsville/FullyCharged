@@ -9,12 +9,13 @@ const FLOOR_NORMAL = Vector2(0, -1)
 const STATE_IDLE = 0
 const STATE_KILLED = 1
 const WALK_SPEED = 70
-const HEALTH_MAX = 10
+const HEALTH_MAX = 5
 
 var HEALTH_CUR = HEALTH_MAX
 
 const IS_ENEMY = true
 
+var moving = true
 var linear_velocity = Vector2()
 var anim = ""
 
@@ -33,27 +34,37 @@ onready var DetectWallRight = $DetectWallRight
 onready var sprite = $Sprite
 
 func _ready():
+	$HitTimer.connect("timeout", self, "restart_enemy")
 	if starting_direction == 0:
 		direction = -1
 	else:
 		direction = 1
 
 func walk(delta):
-	linear_velocity += GRAVITY_VEC * delta
-	linear_velocity.x = direction * WALK_SPEED
-	linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
+	if moving:
+		linear_velocity += GRAVITY_VEC * delta
+		linear_velocity.x = direction * WALK_SPEED
+		linear_velocity = move_and_slide(linear_velocity, FLOOR_NORMAL)
+		
+		if not DetectFloorLeft.is_colliding() and DetectFloorRight.is_colliding() or DetectWallLeft.is_colliding():
+			direction = 1.0
 	
-	if not DetectFloorLeft.is_colliding() and DetectFloorRight.is_colliding() or DetectWallLeft.is_colliding():
-		direction = 1.0
-
-	if not DetectFloorRight.is_colliding() and DetectFloorLeft.is_colliding() or DetectWallRight.is_colliding():
-		direction = -1.0
+		if not DetectFloorRight.is_colliding() and DetectFloorLeft.is_colliding() or DetectWallRight.is_colliding():
+			direction = -1.0
 		
 	return direction
 
 func hit(damage):
+	moving = false
+	$HitTimer.start()
+	$Anim.set_active(false)
 	HEALTH_CUR -= damage
 	print(HEALTH_CUR)
 	if HEALTH_CUR <= 0:
 		state = STATE_KILLED
 		get_parent().remove_child(self)
+		queue_free()
+
+func restart_enemy():
+	moving = true
+	$Anim.set_active(true)

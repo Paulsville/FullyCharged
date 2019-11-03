@@ -8,7 +8,7 @@ const SLOPE_SLIDE_STOP = 25.0
 const WALK_SPEED = 250 # pixels/sec
 const JUMP_SPEED = 480
 const SIDING_CHANGE_SPEED = 10
-const BULLET_VELOCITY = 5000
+const BULLET_VELOCITY = 4000
 const BOMB_VELOCITY_X = 250
 const BOMB_VELOCITY_Y = 500
 const SHOOT_TIME_SHOW_WEAPON = 0.2
@@ -19,7 +19,7 @@ var shoot_time = 99999 # time since last shot
 const ENERGY_MAX = 100
 var ENERGY_CUR = 100
 var dead = false
-var invincible = true
+var invincible = false
 
 signal energy_updated
 
@@ -129,12 +129,15 @@ func _physics_process(delta):
 			($Anim as AnimationPlayer).stop()
 		
 func on_water_entry():
-	print("Water")
 	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
-	if body.get_parent().has_method("IS_ENEMY"):
-		if body.get_parent().IS_ENEMY and !invincible:
+	print(body.get_name())
+	print(body.get_parent().get_name())
+	if body.get_name() == "Hitbox" and body.get_parent().get("IS_ENEMY") != null:
+		if !invincible and body.get_parent().IS_ENEMY:
+			print(body.get_parent().IS_ENEMY)
+			print(!invincible)
 			update_energy(-25)
 			linear_vel = 300 * (global_position - body.get_parent().global_position)/(body.get_parent().global_position - global_position)
 			print(linear_vel)
@@ -144,7 +147,6 @@ func on_hitbox_entered(body):
 		
 func update_energy(value):
 	ENERGY_CUR += value
-	print(ENERGY_CUR)
 	emit_signal("energy_updated", value)
 
 func on_invincible_timeout():

@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://platform/OneWayPlatform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://platform/MovingPlatform.tscn" type="PackedScene" id=3]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=5]
-[ext_resource path="res://DeathZone.tscn" type="PackedScene" id=6]
-[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=7]
-[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
+[ext_resource path="res://DeathZone.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemy/tank_enemy/TankEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemy/basic_enemy/BasicEnemy.tscn" type="PackedScene" id=9]
 
 [node name="Stage" type="Node2D"]
 
@@ -40,25 +41,32 @@ cycle = 1.8
 [node name="Player" parent="." instance=ExtResource( 4 )]
 position = Vector2( 96.1006, 138.33 )
 
-[node name="Enemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1920, 250 )
-
 [node name="DeathZones" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="DeathZone" parent="DeathZones" instance=ExtResource( 6 )]
+[node name="DeathZone" parent="DeathZones" instance=ExtResource( 5 )]
 position = Vector2( 1824, 384 )
 width = 33
 height = 2
 
-[node name="DeathZone2" parent="DeathZones" instance=ExtResource( 6 )]
+[node name="DeathZone2" parent="DeathZones" instance=ExtResource( 5 )]
 position = Vector2( 352, 384 )
 width = 3
 height = 2
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="EnergyBar" parent="GUI" instance=ExtResource( 7 )]
+[node name="EnergyBar" parent="GUI" instance=ExtResource( 6 )]
 
-[node name="ParallaxBg" parent="." instance=ExtResource( 8 )]
+[node name="ParallaxBg" parent="." instance=ExtResource( 7 )]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="TankEnemy" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 1910.67, 170.688 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 1048.55, 172.62 )
+scale = Vector2( 1.5, 1.5 )
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]

@@ -280,17 +280,13 @@ visibility_mode = 1
 script = ExtResource( 9 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( -6.09427, 8.96214 )
 shape = SubResource( 13 )
 
 [node name="InvincibleTimer" type="Timer" parent="."]
-wait_time = 2.0
 autostart = true
-[connection signal="area_entered" from="Hitbox" to="." method="on_hitbox_entered"]
-[connection signal="timeout" from="InvincibleTimer" to="." method="on_invincible_timeout"]
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -298,3 +294,5 @@ one_shot = true
 
 [node name="StopTimer" type="Timer" parent="."]
 one_shot = true
+[connection signal="area_entered" from="Hitbox" to="." method="on_hitbox_entered"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="on_invincible_timeout"]
