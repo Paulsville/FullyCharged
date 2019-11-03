@@ -9,4 +9,4 @@ func on_battery_body_enter(body):
 		print("battery entered")
 		taken = true
 		body.get_parent().update_energy(25)
-		get_parent().remove_child(self)
+		queue_free()
