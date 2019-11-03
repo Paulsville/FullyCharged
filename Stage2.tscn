@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://battery/Battery.tscn" type="PackedScene" id=7]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://env/Haz.png" type="Texture" id=10]
+[ext_resource path="res://env/pipe3.png" type="Texture" id=11]
+[ext_resource path="res://env/pipe2.png" type="Texture" id=12]
 
 [node name="Stage" type="Node2D"]
 
@@ -54,4 +57,45 @@ position = Vector2( 2368.32, 345.728 )
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="EnergyBar" parent="GUI" instance=ExtResource( 9 )]
+
+[node name="Decor" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Decor"]
+position = Vector2( 836, 325 )
+texture = ExtResource( 10 )
+
+[node name="Sprite3" type="Sprite" parent="Decor"]
+position = Vector2( 1052, 261 )
+texture = ExtResource( 10 )
+
+[node name="Sprite2" type="Sprite" parent="Decor"]
+position = Vector2( 836, 284 )
+texture = ExtResource( 10 )
+
+[node name="Sprite4" type="Sprite" parent="Decor"]
+position = Vector2( 1052, 220 )
+texture = ExtResource( 10 )
+
+[node name="Sprite5" type="Sprite" parent="Decor"]
+position = Vector2( 1578.36, 457.772 )
+texture = ExtResource( 11 )
+
+[node name="Sprite6" type="Sprite" parent="Decor"]
+position = Vector2( 1578.15, 401.68 )
+texture = ExtResource( 12 )
+
+[node name="Sprite7" type="Sprite" parent="Decor"]
+position = Vector2( 2293.82, 464.916 )
+rotation = 1.5708
+texture = ExtResource( 11 )
+
+[node name="Sprite8" type="Sprite" parent="Decor"]
+position = Vector2( 2351.82, 464.916 )
+rotation = 1.5708
+texture = ExtResource( 11 )
+
+[node name="Sprite9" type="Sprite" parent="Decor"]
+position = Vector2( 2409.82, 464.916 )
+rotation = 1.5708
+texture = ExtResource( 11 )
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
