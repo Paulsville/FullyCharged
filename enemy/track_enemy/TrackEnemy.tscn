@@ -8,7 +8,7 @@
 extents = Vector2( 8, 8 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 21.0089
+radius = 16.1265
 
 [node name="TrackEnemy" instance=ExtResource( 1 )]
 scale = Vector2( 2, 2 )

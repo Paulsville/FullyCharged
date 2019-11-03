@@ -1,55 +1,90 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=3]
-[ext_resource path="res://track/Track.tscn" type="PackedScene" id=4]
-[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://enemy/track_enemy/TrackEnemy.tscn" type="PackedScene" id=6]
+[ext_resource path="res://battery/Battery.tscn" type="PackedScene" id=3]
+[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://track/Track.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://enemy/track_enemy/TrackEnemy.tscn" type="PackedScene" id=7]
+[ext_resource path="res://enemy/tank_enemy/TankEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://enemy/basic_enemy/BasicEnemy.tscn" type="PackedScene" id=9]
 
 [node name="Stage" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 262173, 536870913, 0, 262174, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 1, 0, 327680, 536870913, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 1, 0, 327707, 536870913, 0, 327708, 0, 0, 327709, 2, 0, 327710, 2, 0, 327711, 2, 0, 327712, 2, 0, 327713, 2, 0, 327714, 0, 0, 327715, 1, 0, 393223, 3, 0, 393227, 536870913, 0, 393228, 536870912, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 1, 0, 393237, 536870913, 0, 393238, 0, 0, 393239, 0, 0, 393240, 1, 0, 393254, 536870913, 0, 393255, 0, 0, 393256, 0, 0, 393257, 0, 0, 393258, 0, 0, 393259, 1, 0, 393261, 536870913, 0, 393262, 0, 0, 393263, 1, 0, 393266, 536870913, 0, 393267, 0, 0, 393268, 1, 0, 458759, 3, 0, 458773, 536870915, 0, 458774, 2, 0, 458775, 2, 0, 458776, 3, 0, 458790, 536870915, 0, 458791, 2, 0, 458792, 2, 0, 458793, 2, 0, 458794, 2, 0, 458795, 3, 0, 458797, 536870915, 0, 458798, 2, 0, 458799, 3, 0, 458802, 536870915, 0, 458803, 2, 0, 458804, 3, 0, 524295, 3, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 536870915, 0, 524310, 2, 0, 524311, 2, 0, 524312, 3, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 536870915, 0, 524327, 2, 0, 524328, 2, 0, 524329, 2, 0, 524330, 2, 0, 524331, 3, 0, 524333, 536870915, 0, 524334, 2, 0, 524335, 3, 0, 524338, 536870915, 0, 524339, 2, 0, 524340, 3, 0, 589867, 3, 0, 589869, 536870915, 0, 589870, 2, 0, 589871, 3, 0, 589874, 536870915, 0, 589875, 2, 0, 589876, 3, 0, 589879, 536870913, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 1, 0, 655403, 3, 0, 655415, 536870915, 0, 655416, 2, 0, 655417, 2, 0, 655418, 2, 0, 655419, 2, 0, 655420, 2, 0, 655421, 2, 0, 655422, 2, 0, 655423, 3, 0, 720939, 2, 0, 720940, 0, 0, 720941, 0, 0, 720942, 0, 0, 720943, 0, 0, 720944, 0, 0, 720945, 0, 0, 720946, 0, 0, 720947, 0, 0, 720948, 0, 0, 720949, 0, 0, 720950, 0, 0, 720951, 2, 0, 720952, 2, 0, 720953, 2, 0, 720954, 2, 0, 720955, 2, 0, 720956, 2, 0, 720957, 2, 0, 720958, 2, 0, 720959, 3, 0 )
+tile_data = PoolIntArray( 262173, 536870913, 0, 262174, 0, 0, 262175, 0, 0, 262176, 0, 0, 262177, 1, 0, 327680, 536870913, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 1, 0, 327707, 536870913, 0, 327708, 0, 0, 327709, 2, 0, 327710, 2, 0, 327711, 2, 0, 327712, 2, 0, 327713, 2, 0, 327714, 0, 0, 327715, 1, 0, 393223, 3, 0, 393227, 536870913, 0, 393228, 536870912, 0, 393229, 0, 0, 393230, 0, 0, 393231, 0, 0, 393232, 1, 0, 393237, 536870913, 0, 393238, 0, 0, 393239, 0, 0, 393240, 1, 0, 393254, 536870913, 0, 393255, 0, 0, 393256, 0, 0, 393257, 0, 0, 393258, 1, 0, 393261, 536870913, 0, 393262, 0, 0, 393263, 1, 0, 393266, 536870913, 0, 393267, 0, 0, 393268, 1, 0, 458759, 3, 0, 458773, 536870915, 0, 458774, 2, 0, 458775, 2, 0, 458776, 3, 0, 458790, 536870915, 0, 458791, 2, 0, 458792, 2, 0, 458793, 2, 0, 458794, 3, 0, 458797, 536870915, 0, 458798, 2, 0, 458799, 3, 0, 458802, 536870915, 0, 458803, 2, 0, 458804, 3, 0, 524295, 3, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524304, 0, 0, 524305, 0, 0, 524306, 0, 0, 524307, 0, 0, 524308, 0, 0, 524309, 536870915, 0, 524310, 2, 0, 524311, 2, 0, 524312, 3, 0, 524313, 0, 0, 524314, 0, 0, 524315, 0, 0, 524316, 0, 0, 524317, 0, 0, 524318, 0, 0, 524319, 0, 0, 524320, 0, 0, 524321, 0, 0, 524322, 0, 0, 524323, 0, 0, 524324, 0, 0, 524325, 0, 0, 524326, 536870915, 0, 524327, 2, 0, 524328, 2, 0, 524329, 2, 0, 524330, 3, 0, 524333, 536870915, 0, 524334, 2, 0, 524335, 3, 0, 524338, 536870915, 0, 524339, 2, 0, 524340, 3, 0, 589866, 3, 0, 589869, 536870915, 0, 589870, 2, 0, 589871, 3, 0, 589874, 536870915, 0, 589875, 2, 0, 589876, 3, 0, 589879, 536870913, 0, 589880, 0, 0, 589881, 0, 0, 589882, 0, 0, 589883, 0, 0, 589884, 0, 0, 589885, 0, 0, 589886, 0, 0, 589887, 1, 0, 655402, 3, 0, 655415, 536870915, 0, 655416, 2, 0, 655417, 2, 0, 655418, 2, 0, 655419, 2, 0, 655420, 2, 0, 655421, 2, 0, 655422, 2, 0, 655423, 3, 0, 720938, 2, 0, 720939, 0, 0, 720940, 0, 0, 720941, 0, 0, 720942, 0, 0, 720943, 0, 0, 720944, 0, 0, 720945, 0, 0, 720946, 0, 0, 720947, 0, 0, 720948, 0, 0, 720949, 0, 0, 720950, 0, 0, 720951, 2, 0, 720952, 2, 0, 720953, 2, 0, 720954, 2, 0, 720955, 2, 0, 720956, 2, 0, 720957, 2, 0, 720958, 2, 0, 720959, 3, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2566.58, 329.887 )
 
-[node name="ParallaxBg" parent="." instance=ExtResource( 3 )]
+[node name="Battery" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3136, 512 )
+
+[node name="ParallaxBg" parent="." instance=ExtResource( 4 )]
 scale = Vector2( 1.5, 1.5 )
 transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
 
 [node name="Tracks" type="Node2D" parent="."]
+position = Vector2( 0, 32 )
 
-[node name="Track" parent="Tracks" instance=ExtResource( 4 )]
+[node name="Track" parent="Tracks" instance=ExtResource( 5 )]
 position = Vector2( 2848.99, 452.164 )
 scale = Vector2( 4, 4 )
 
-[node name="Track2" parent="Tracks" instance=ExtResource( 4 )]
-position = Vector2( 2848.99, 581.172 )
+[node name="Track2" parent="Tracks" instance=ExtResource( 5 )]
+position = Vector2( 2848.99, 579.172 )
 scale = Vector2( 4, 4 )
 
-[node name="Track3" parent="Tracks" instance=ExtResource( 4 )]
+[node name="Track3" parent="Tracks" instance=ExtResource( 5 )]
 position = Vector2( 2848.99, 324.809 )
 scale = Vector2( 4, 4 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="EnergyBar" parent="GUI" instance=ExtResource( 5 )]
+[node name="EnergyBar" parent="GUI" instance=ExtResource( 6 )]
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="TrackEnemy" parent="Enemies" instance=ExtResource( 6 )]
+[node name="TrackEnemy" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 2848.99, 442.24 )
 speed = 3.0
 
-[node name="TrackEnemy2" parent="Enemies" instance=ExtResource( 6 )]
+[node name="TrackEnemy2" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 2848.99, 506.24 )
 speed = 3.0
 
-[node name="TrackEnemy3" parent="Enemies" instance=ExtResource( 6 )]
+[node name="TrackEnemy3" parent="Enemies" instance=ExtResource( 7 )]
 position = Vector2( 2848.99, 378.24 )
 speed = 3.0
+
+[node name="TrackEnemy4" parent="Enemies" instance=ExtResource( 7 )]
+position = Vector2( 2848.99, 314.24 )
+speed = 3.0
+
+[node name="TankEnemy" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 786.186, 359.891 )
+
+[node name="TankEnemy2" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 971.28, 364.369 )
+
+[node name="TankEnemy3" parent="Enemies" instance=ExtResource( 8 )]
+position = Vector2( 2084.83, 244.954 )
+
+[node name="BasicEnemy" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 664.248, 488.111 )
+
+[node name="BasicEnemy2" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 906.065, 486.618 )
+
+[node name="BasicEnemy3" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 1194.15, 491.096 )
+
+[node name="BasicEnemy4" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 1843.48, 485.125 )
+
+[node name="BasicEnemy5" parent="Enemies" instance=ExtResource( 9 )]
+position = Vector2( 2212.17, 486.618 )
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
