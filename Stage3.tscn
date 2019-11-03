@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://platform/OneWayPlatform.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://enemy/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://DeathZone.tscn" type="PackedScene" id=6]
 [ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=7]
+[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 
 [node name="Stage" type="Node2D"]
 
@@ -58,4 +59,6 @@ height = 2
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="EnergyBar" parent="GUI" instance=ExtResource( 7 )]
+
+[node name="ParallaxBg" parent="." instance=ExtResource( 8 )]
 [connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
