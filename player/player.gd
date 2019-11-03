@@ -147,6 +147,8 @@ func update_energy(value):
 		energy = ENERGY_MAX - ENERGY_CUR
 	ENERGY_CUR += energy
 	emit_signal("energy_updated", energy)
+	print(ENERGY_CUR)
+	print(energy)
 
 func on_invincible_timeout():
 	invincible = false

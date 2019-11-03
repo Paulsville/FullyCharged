@@ -3,9 +3,9 @@
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=3]
-[ext_resource path="res://enemy/track_enemy/TrackEnemy.tscn" type="PackedScene" id=4]
-[ext_resource path="res://track/Track.tscn" type="PackedScene" id=5]
-[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://track/Track.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GUI/EnergyBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemy/track_enemy/TrackEnemy.tscn" type="PackedScene" id=6]
 
 [node name="Stage" type="Node2D"]
 
@@ -21,23 +21,26 @@ position = Vector2( 275.86, 283.576 )
 scale = Vector2( 1.5, 1.5 )
 transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
 
-[node name="TrackEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2848.99, 442.24 )
-
 [node name="Tracks" type="Node2D" parent="."]
 
-[node name="Track" parent="Tracks" instance=ExtResource( 5 )]
+[node name="Track" parent="Tracks" instance=ExtResource( 4 )]
 position = Vector2( 2848.99, 452.164 )
 scale = Vector2( 4, 4 )
 
-[node name="Track2" parent="Tracks" instance=ExtResource( 5 )]
+[node name="Track2" parent="Tracks" instance=ExtResource( 4 )]
 position = Vector2( 2848.99, 581.172 )
 scale = Vector2( 4, 4 )
 
-[node name="Track3" parent="Tracks" instance=ExtResource( 5 )]
+[node name="Track3" parent="Tracks" instance=ExtResource( 4 )]
 position = Vector2( 2848.99, 324.809 )
 scale = Vector2( 4, 4 )
 
 [node name="GUI" type="CanvasLayer" parent="."]
 
-[node name="EnergyBar" parent="GUI" instance=ExtResource( 6 )]
+[node name="EnergyBar" parent="GUI" instance=ExtResource( 5 )]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="TrackEnemy" parent="Enemies" instance=ExtResource( 6 )]
+position = Vector2( 2848.99, 442.24 )
+[connection signal="energy_updated" from="Player" to="GUI/EnergyBar" method="_on_Player_energy_updated"]
