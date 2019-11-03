@@ -132,6 +132,8 @@ func on_water_entry():
 	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
+	print(body.get_name())
+	print(body.get_parent().get_name())
 	if body.get_name() == "Hitbox" and body.get_parent().get("IS_ENEMY") != null:
 		if !invincible and body.get_parent().IS_ENEMY:
 			print(body.get_parent().IS_ENEMY)

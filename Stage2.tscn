@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Metal.tres" type="TileSet" id=1]
 [ext_resource path="res://player/Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://enemy/basic_enemy/BasicEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://enemy/tank_enemy/TankEnemy.tscn" type="PackedScene" id=6]
 [ext_resource path="res://battery/Battery.tscn" type="PackedScene" id=7]
+[ext_resource path="res://background/ParallaxBg.tscn" type="PackedScene" id=8]
 
 [node name="Stage" type="Node2D"]
 
@@ -21,10 +22,6 @@ position = Vector2( 120, 220 )
 [node name="EndPoint" parent="." instance=ExtResource( 3 )]
 position = Vector2( 3704.54, 356.617 )
 next_scene = "Stage3"
-
-[node name="TankEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 728.045, 214.042 )
-scale = Vector2( 3, 3 )
 
 [node name="DeathZones" type="Node2D" parent="."]
 
@@ -50,3 +47,5 @@ scale = Vector2( 2, 2 )
 
 [node name="Battery" parent="." instance=ExtResource( 7 )]
 position = Vector2( 2368.32, 345.728 )
+
+[node name="ParallaxBg" parent="." instance=ExtResource( 8 )]
