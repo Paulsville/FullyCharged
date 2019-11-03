@@ -20,6 +20,7 @@ const ENERGY_MAX = 100
 var ENERGY_CUR = 100
 var dead = false
 var invincible = false
+const IS_ENEMY = false
 
 signal energy_updated
 
@@ -132,21 +133,19 @@ func on_water_entry():
 	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
-	print(body.get_name())
-	print(body.get_parent().get_name())
 	if body.get_name() == "Hitbox" and body.get_parent().get("IS_ENEMY") != null:
 		if !invincible and body.get_parent().IS_ENEMY:
-			print(body.get_parent().IS_ENEMY)
-			print(!invincible)
 			update_energy(-25)
 			linear_vel = 300 * (global_position - body.get_parent().global_position)/(body.get_parent().global_position - global_position)
-			print(linear_vel)
 			invincible = true
 			var timer = get_node("InvincibleTimer")
 			timer.start()
 		
 func update_energy(value):
-	ENERGY_CUR += value
+	if ENERGY_CUR < (ENERGY_MAX - value):
+		ENERGY_CUR += value
+	else:
+		ENERGY_CUR = ENERGY_MAX
 	emit_signal("energy_updated", value)
 
 func on_invincible_timeout():
