@@ -132,13 +132,14 @@ func on_water_entry():
 	update_energy(0-ENERGY_CUR)
 
 func on_hitbox_entered(body):
-	if body.get_parent().IS_ENEMY and !invincible:
-		update_energy(-25)
-		linear_vel = 300 * (global_position - body.get_parent().global_position)/(body.get_parent().global_position - global_position)
-		print(linear_vel)
-		invincible = true
-		var timer = get_node("InvincibleTimer")
-		timer.start()
+	if body.get_parent().has_method("IS_ENEMY"):
+		if body.get_parent().IS_ENEMY and !invincible:
+			update_energy(-25)
+			linear_vel = 300 * (global_position - body.get_parent().global_position)/(body.get_parent().global_position - global_position)
+			print(linear_vel)
+			invincible = true
+			var timer = get_node("InvincibleTimer")
+			timer.start()
 		
 func update_energy(value):
 	ENERGY_CUR += value
