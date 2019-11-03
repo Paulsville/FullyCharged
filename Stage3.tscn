@@ -59,6 +59,8 @@ height = 2
 [node name="EnergyBar" parent="GUI" instance=ExtResource( 6 )]
 
 [node name="ParallaxBg" parent="." instance=ExtResource( 7 )]
+scale = Vector2( 1.5, 1.5 )
+transform = Transform2D( 1.5, 0, 0, 1.5, 0, 0 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
